@@ -42,6 +42,7 @@ public class GestionClient implements Runnable {
                 }
                 
                 String formattedMessage = pseudo + ": " + message;
+                System.out.println(formattedMessage);
                 serveur.broadcastToAll(formattedMessage);
             }
             
