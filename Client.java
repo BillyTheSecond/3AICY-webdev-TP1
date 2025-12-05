@@ -23,7 +23,9 @@ public class Client {
             try {
                 String message;
                 while (running && (message = in.readLine()) != null) {
-                    System.out.println("\n[Serveur] " + message);
+                    // Effacer la ligne "Vous: " en cours
+                    System.out.print("\r\033[K"); // code pour supprimer la ligne
+                    System.out.println("[Serveur] " + message);
                     System.out.print("Vous: ");
                 }
             } catch (IOException e) {
