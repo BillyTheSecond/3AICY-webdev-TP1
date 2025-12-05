@@ -6,7 +6,7 @@ public class Main {
             try {
                 port = Integer.parseInt(args[0]);
             } catch (NumberFormatException e) {
-                System.err.println("Port invalide, utilisation du port par défaut: 9876");
+                System.err.println("Port invalide, utilisation du port par défaut: 5001");
             }
         }
         
