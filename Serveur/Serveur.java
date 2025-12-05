@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.ArrayList;
 
 public class Serveur implements Runnable {
     private ServerSocket serverSocket;
@@ -12,7 +12,7 @@ public class Serveur implements Runnable {
     
     public Serveur(int port) {
         this.port = port;
-        this.clients = new CopyOnWriteArrayList<>();
+        this.clients = new ArrayList<>();
         this.running = false;
     }
 
@@ -55,15 +55,19 @@ public class Serveur implements Runnable {
     }
     
     public synchronized void broadcastToAll(String message) {
-        for (GestionClient client : clients) {
-            if (client.isConnected()) {
-                client.sendMessage(message);
+        synchronized(clients) {
+            for (GestionClient client : clients) {
+                if (client.isConnected()) {
+                    client.sendMessage(message);
+                }
             }
         }
     }
     
     public synchronized void removeClient(GestionClient client) {
-        clients.remove(client);
+        synchronized(clients) {
+            clients.remove(client);
+        }
         System.out.println("Client retiré. Nombre de clients connectés: " + clients.size());
     }
     
