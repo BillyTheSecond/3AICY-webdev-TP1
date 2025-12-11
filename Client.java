@@ -13,7 +13,8 @@ public class Client {
     static class ReceptionThread extends Thread {
         private BufferedReader in;
         private volatile boolean running = true;
-        
+        // le type volatile permet de dire que la valeur sera modifiée par des Threads
+
         public ReceptionThread(BufferedReader in) {
             this.in = in;
         }

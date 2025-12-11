@@ -58,7 +58,7 @@ public class Serveur implements Runnable {
         synchronized(clients) {
             for (GestionClient client : clients) {
                 if (client.isConnected()) {
-                    client.sendMessage(message);
+                    client.sendToClient(message);
                 }
             }
         }

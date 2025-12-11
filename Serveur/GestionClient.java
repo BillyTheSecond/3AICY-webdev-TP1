@@ -53,7 +53,7 @@ public class GestionClient implements Runnable {
         }
     }
 
-    public void sendMessage(String message) {
+    public void sendToClient(String message) {
         if (out != null && connected) {
             out.println(message);
         }

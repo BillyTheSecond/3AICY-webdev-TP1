@@ -42,6 +42,7 @@ public class ClientGUI extends Application {
         messageArea.setWrapText(true);
         messageArea.setPrefHeight(400);
         
+
         // Zone saisie
         HBox bottomPanel = new HBox(10);
         bottomPanel.setPadding(new Insets(10));
@@ -53,12 +54,12 @@ public class ClientGUI extends Application {
         
         sendButton = new Button("Envoyer");
         sendButton.setPrefWidth(80);
-        sendButton.setOnAction(e -> sendMessage());
+        sendButton.setOnAction(e -> sendToServeur());
         
-        // Envoyer message quand on appuie sur entrer
+        // On envoie message quand on appuie sur entrer
         messageInput.setOnKeyPressed(e -> {
             if (e.getCode().toString().equals("ENTER")) {
-                sendMessage();
+                sendToServeur();
             }
         });
         
@@ -153,7 +154,7 @@ public class ClientGUI extends Application {
         }
     }
     
-    private void sendMessage() {
+    private void sendToServeur() {
         String message = messageInput.getText().trim();
         
         if (message.isEmpty()) {
