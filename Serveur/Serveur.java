@@ -1,8 +1,8 @@
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Serveur implements Runnable {
     private ServerSocket serverSocket;
@@ -70,6 +70,8 @@ public class Serveur implements Runnable {
         }
         System.out.println("Client retiré. Nombre de clients connectés: " + clients.size());
     }
+
+    // On utilise synchronized car plusieurs threads peuvent lire ou ecrire sur la meme varible
     
     public void stop() {
         running = false;
